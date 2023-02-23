@@ -24,10 +24,11 @@ const {
 // const hash = Base64.stringify(hashDigest);
 // const encoded = puzzle_hash_to_address(hash, "col");
 // console.log(hash, encoded);
-
 // const COLLECTION_ID = "col1d3xv8sehzp9y23lm4w9mgewe55kqk6zhct5l34u0eq8jpllcsw4s9acv87";
+
 const COLLECTION_ID = "6c4cc3c337104a4547fbab8bb465d9a52c0b6857c2e9f8d78fc80f20fff883ab";
 const FEE = 0.0005;
+const MAX_PRICE = 1;
 
 async function snipeOffer(offer) {
   const agent = new RPCAgent({ service: "wallet" });
@@ -70,8 +71,7 @@ function main() {
         console.log("No collection id set");
         return;
       }
-      if (nft.collection.id === COLLECTION_ID && offerData.price <= 1) {
-        console.log(offerData);
+      if (nft.collection.id === COLLECTION_ID && offerData.price <= MAX_PRICE) {
         snipeOffer(offerData.offer).then((res) => {
           console.log(res);
         });
