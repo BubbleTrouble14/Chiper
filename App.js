@@ -59,10 +59,11 @@ function main() {
     var response = JSON.parse(event.data);
     if (response.type === "offer") {
       const offerData = response.data;
-      if (!offerData.status !== 0) {
+      if (offerData.status !== 0) {
         return;
       }
       if (!offerData.offered[0].is_nft) {
+        console.log("Not a nft");
         return;
       }
       const nft = offerData.offered[0];
@@ -80,7 +81,6 @@ function main() {
         });
       }
       console.log("Not the correct collection: ", nft.collection.id);
-      console.log("Not the correct collection: ", offerData);
     }
   };
 }
