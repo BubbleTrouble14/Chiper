@@ -59,6 +59,9 @@ function main() {
     var response = JSON.parse(event.data);
     if (response.type === "offer") {
       const offerData = response.data;
+      if (!offerData.status === 0) {
+        return;
+      }
       if (!offerData.offered[0].is_nft) {
         return;
       }
