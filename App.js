@@ -28,7 +28,7 @@ const {
 
 const COLLECTION_ID = "6c4cc3c337104a4547fbab8bb465d9a52c0b6857c2e9f8d78fc80f20fff883ab";
 const FEE = 0.0005;
-const MAX_PRICE = 1;
+const MAX_PRICE = 2;
 
 async function snipeOffer(offer) {
   const agent = new RPCAgent({ service: "wallet" });
@@ -63,7 +63,7 @@ function main() {
         return;
       }
       if (!offerData.offered[0].is_nft) {
-        console.log("Not a nft");
+        // console.log("Not a nft");
         return;
       }
       const nft = offerData.offered[0];
@@ -80,7 +80,7 @@ function main() {
           console.log(res);
         });
       }
-      console.log("Not the correct collection: ", nft.collection.id);
+      //   console.log("Not the correct collection: ", nft.collection.id);
     }
   };
 }
